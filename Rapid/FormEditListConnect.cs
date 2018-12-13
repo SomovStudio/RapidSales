@@ -87,19 +87,22 @@ namespace Rapid
 		/* Проверка соединения */
 		void CheckConnect()
 		{
-			SqlConnection MySql_Connection = new SqlConnection();
+			SqlConnection MsSql_Connection = new SqlConnection();
 			//проверка подключения к базе данных
 			try{
 				panel3.Visible = true;
 				this.Update();
-				MySql_Connection.ConnectionString = "server=" + textBox2.Text + ";database=" + textBox3.Text + ";uid=" + textBox4.Text + ";pwd=" + textBox5.Text + ";";
-				MySql_Connection.Open();
+				MsSql_Connection.ConnectionString = "Server=" + textBox2.Text + 
+					";Database=" + textBox3.Text + 
+					";User Id=" + textBox4.Text + 
+					";Password=" + textBox5.Text;
+				MsSql_Connection.Open();
 				MessageBox.Show("Проверка прошла успешно.");
-				MySql_Connection.Close();
+				MsSql_Connection.Close();
 				panel3.Visible = false;
 			}catch(Exception ex){
 				MessageBox.Show("Ошибка!!! Нет соединения с такой базой данных.");
-				MySql_Connection.Close();
+				MsSql_Connection.Close();
 				panel3.Visible = false;
 			}
 		}
