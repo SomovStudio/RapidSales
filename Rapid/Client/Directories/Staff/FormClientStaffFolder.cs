@@ -80,7 +80,7 @@ namespace Rapid
 			MsSQLShort SQlCommand = new MsSQLShort();
 			
 			if(this.Text == "Создать папку."){
-				SQlCommand.SqlCommand = "INSERT INTO staff (staff_name, staff_type) VALUE ('" + textBox1.Text + "', 1)";
+				SQlCommand.SqlCommand = "INSERT INTO staff (staff_name, staff_type) VALUES ('" + textBox1.Text + "', 1)";
 				if(SQlCommand.ExecuteNonQuery()){
 					// ИСТОРИЯ: Запись в журнал истории обновлений
 					ClassServer.SaveUpdateInBase(8, DateTime.Now.ToString(), "", "Создание новой папки.", "");

@@ -86,7 +86,7 @@ namespace Rapid
 			
 			// При сохранении новой записи
 			if(this.Text == "Новая запись."){
-				SQlCommand.SqlCommand = "INSERT INTO typetax (typeTax_name, typeTax_rating, typeTax_additionally) VALUE ('" + textBox1.Text + "', '" + textBox2.Text + "','" + textBox3.Text + "')";
+				SQlCommand.SqlCommand = "INSERT INTO typetax (typeTax_name, typeTax_rating, typeTax_additionally) VALUES ('" + textBox1.Text + "', '" + textBox2.Text + "','" + textBox3.Text + "')";
 				if(SQlCommand.ExecuteNonQuery()){
 					// ИСТОРИЯ: Запись в журнал истории обновлений
 					ClassServer.SaveUpdateInBase(7, DateTime.Now.ToString(), "", "Создание новой записи.", "");

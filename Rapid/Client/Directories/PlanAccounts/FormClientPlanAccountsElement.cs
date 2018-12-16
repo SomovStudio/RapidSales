@@ -84,7 +84,7 @@ namespace Rapid
 			
 			// При сохранении новой записи
 			if(this.Text == "Новая запись."){
-				SQlCommand.SqlCommand = "INSERT INTO planaccounts (planAccounts_name, planAccounts_account, planAccounts_type, planAccounts_delete) VALUE ('" + textBox1.Text + "', '" + textBox2.Text + "', '" + comboBox1.Text + "', 0)";
+				SQlCommand.SqlCommand = "INSERT INTO planaccounts (planAccounts_name, planAccounts_account, planAccounts_type, planAccounts_delete) VALUES ('" + textBox1.Text + "', '" + textBox2.Text + "', '" + comboBox1.Text + "', 0)";
 				if(SQlCommand.ExecuteNonQuery()){
 					// ИСТОРИЯ: Запись в журнал истории обновлений
 					ClassServer.SaveUpdateInBase(13, DateTime.Now.ToString(), "", "Создание новой записи.", "");

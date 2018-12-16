@@ -80,7 +80,7 @@ namespace Rapid.Client.Firms
 			MsSQLShort SQlCommand = new MsSQLShort();
 			
 			if(this.Text == "Создать папку."){
-				SQlCommand.SqlCommand = "INSERT INTO firms (firm_name, firm_details, firm_address_phone, firm_trade_representative, firm_additionally, firm_type, firm_folder, firm_delete) VALUE ('" + textBox1.Text + "', '', '', '', '', 1, '', 0)";
+				SQlCommand.SqlCommand = "INSERT INTO firms (firm_name, firm_details, firm_address_phone, firm_trade_representative, firm_additionally, firm_type, firm_folder, firm_delete) VALUES ('" + textBox1.Text + "', '', '', '', '', 1, '', 0)";
 				if(SQlCommand.ExecuteNonQuery()){
 					// ИСТОРИЯ: Запись в журнал истории обновлений
 					ClassServer.SaveUpdateInBase(3, DateTime.Now.ToString(), "", "Создание новой папки.", "");

@@ -23,7 +23,7 @@ namespace Rapid
 		{
 			MsSQLShort SqlCommandBalance = new MsSQLShort();
 			String DateInsert = DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString();
-			SqlCommandBalance.SqlCommand = "INSERT INTO balance (balance_tmc, balance_date, balance_number) VALUE ('" + NameTMC + "', '" + DateInsert + "', 0)";
+			SqlCommandBalance.SqlCommand = "INSERT INTO balance (balance_tmc, balance_date, balance_number) VALUES ('" + NameTMC + "', '" + DateInsert + "', 0)";
 			if(SqlCommandBalance.ExecuteNonQuery()){
 				ClassForms.Rapid_Client.MessageConsole("Остатки: Новая запись успешно добавлена.", false);
 			} else ClassForms.Rapid_Client.MessageConsole("Остатки: Ошибка ввода новой записи в таблицу 'Остатки'", true);
@@ -65,7 +65,7 @@ namespace Rapid
 			_dataSet.Clear();
 			_dataSet.DataSetName = "balance";
 			_mySql.SelectSqlCommand = "SELECT id_balance, balance_tmc, balance_date, balance_number FROM balance";
-			_mySql.InsertSqlCommand = "INSERT INTO balance (balance_tmc, balance_date, balance_number) VALUE (@balance_tmc, @balance_date, @balance_number)";
+			_mySql.InsertSqlCommand = "INSERT INTO balance (balance_tmc, balance_date, balance_number) VALUES (@balance_tmc, @balance_date, @balance_number)";
 			_mySql.InsertParametersAdd("@balance_tmc", SqlDbType.VarChar, 250, "balance_tmc", UpdateRowSource.None);
 			_mySql.InsertParametersAdd("@balance_date", SqlDbType.Date, 10, "balance_date", UpdateRowSource.None);
 			_mySql.InsertParametersAdd("@balance_number", SqlDbType.Float, 10, "balance_number", UpdateRowSource.None);
@@ -103,7 +103,7 @@ namespace Rapid
 			_dataSet.Clear();
 			_dataSet.DataSetName = "balance";
 			_mySql.SelectSqlCommand = "SELECT id_balance, balance_tmc, balance_date, balance_number FROM balance";
-			_mySql.InsertSqlCommand = "INSERT INTO balance (balance_tmc, balance_date, balance_number) VALUE (@balance_tmc, @balance_date, @balance_number)";
+			_mySql.InsertSqlCommand = "INSERT INTO balance (balance_tmc, balance_date, balance_number) VALUES (@balance_tmc, @balance_date, @balance_number)";
 			_mySql.InsertParametersAdd("@balance_tmc", SqlDbType.VarChar, 250, "balance_tmc", UpdateRowSource.None);
 			_mySql.InsertParametersAdd("@balance_date", SqlDbType.Date, 10, "balance_date", UpdateRowSource.None);
 			_mySql.InsertParametersAdd("@balance_number", SqlDbType.Float, 10, "balance_number", UpdateRowSource.None);
@@ -141,7 +141,7 @@ namespace Rapid
 			_dataSet.Clear();
 			_dataSet.DataSetName = "balance";
 			_mySql.SelectSqlCommand = "SELECT id_balance, balance_tmc, balance_date, balance_number FROM balance";
-			_mySql.InsertSqlCommand = "INSERT INTO balance (balance_tmc, balance_date, balance_number) VALUE (@balance_tmc, @balance_date, @balance_number)";
+			_mySql.InsertSqlCommand = "INSERT INTO balance (balance_tmc, balance_date, balance_number) VALUES (@balance_tmc, @balance_date, @balance_number)";
 			_mySql.InsertParametersAdd("@balance_tmc", SqlDbType.VarChar, 250, "balance_tmc", UpdateRowSource.None);
 			_mySql.InsertParametersAdd("@balance_date", SqlDbType.Date, 10, "balance_date", UpdateRowSource.None);
 			_mySql.InsertParametersAdd("@balance_number", SqlDbType.Float, 10, "balance_number", UpdateRowSource.None);
@@ -191,7 +191,7 @@ namespace Rapid
 			_dataSet.Clear();
 			_dataSet.DataSetName = "balance";
 			_mySql.SelectSqlCommand = "SELECT id_balance, balance_tmc, balance_date, balance_number FROM balance";
-			_mySql.InsertSqlCommand = "INSERT INTO balance (balance_tmc, balance_date, balance_number) VALUE (@balance_tmc, @balance_date, @balance_number)";
+			_mySql.InsertSqlCommand = "INSERT INTO balance (balance_tmc, balance_date, balance_number) VALUES (@balance_tmc, @balance_date, @balance_number)";
 			_mySql.InsertParametersAdd("@balance_tmc", SqlDbType.VarChar, 250, "balance_tmc", UpdateRowSource.None);
 			_mySql.InsertParametersAdd("@balance_date", SqlDbType.Date, 10, "balance_date", UpdateRowSource.None);
 			_mySql.InsertParametersAdd("@balance_number", SqlDbType.Float, 10, "balance_number", UpdateRowSource.None);

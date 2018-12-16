@@ -113,7 +113,7 @@ namespace Rapid
 			// При сохранении новой записи
 			if(this.Text == "Новая запись."){
 				String flagFired = (checkBox1.Checked) ? "1" : "0";
-				SQlCommand.SqlCommand = "INSERT INTO staff (staff_name, staff_details, staff_address_phone, staff_date_hired, staff_date_fired, staff_fired, staff_salary, staff_additionally, staff_type, staff_folder, staff_delete) VALUE ('"+textBox1.Text+"', '"+textBox2.Text+"', '"+textBox3.Text+"', '"+dateTimePicker1.Text+"', '"+dateTimePicker2.Text+"', "+flagFired+", "+textBox4.Text+", '"+textBox5.Text+"', 0, '"+comboBox1.Text+"', 0)";
+				SQlCommand.SqlCommand = "INSERT INTO staff (staff_name, staff_details, staff_address_phone, staff_date_hired, staff_date_fired, staff_fired, staff_salary, staff_additionally, staff_type, staff_folder, staff_delete) VALUES ('"+textBox1.Text+"', '"+textBox2.Text+"', '"+textBox3.Text+"', '"+dateTimePicker1.Text+"', '"+dateTimePicker2.Text+"', "+flagFired+", "+textBox4.Text+", '"+textBox5.Text+"', 0, '"+comboBox1.Text+"', 0)";
 				if(SQlCommand.ExecuteNonQuery()){
 					// ИСТОРИЯ: Запись в журнал истории обновлений
 					ClassServer.SaveUpdateInBase(8, DateTime.Now.ToString(), "", "Создание новой записи.", "");

@@ -22,7 +22,7 @@ namespace Rapid
 		public static bool OperationAdd(String _date, String _dt, String _kt, String _sum, String _specification, String _docID)
 		{
 			MsSQLShort _mySQL = new MsSQLShort();
-			_mySQL.SqlCommand = "INSERT INTO operations (operations_date, operations_id_doc, operations_DT, operations_KT, operations_sum, operations_specification) VALUE ('" + _date + "', '" + _docID + "', " + _dt + ", " + _kt + ", " + _sum + ", '" + _specification + "')";
+			_mySQL.SqlCommand = "INSERT INTO operations (operations_date, operations_id_doc, operations_DT, operations_KT, operations_sum, operations_specification) VALUES ('" + _date + "', '" + _docID + "', " + _dt + ", " + _kt + ", " + _sum + ", '" + _specification + "')";
 			if (_mySQL.ExecuteNonQuery()){
 				// ИСТОРИЯ: Запись в журнал истории обновлений
 				ClassServer.SaveUpdateInBase(12, DateTime.Now.ToString(), "", "Создана новая операция.", "");

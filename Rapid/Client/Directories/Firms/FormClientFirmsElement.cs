@@ -97,7 +97,7 @@ namespace Rapid.Client.Firms
 			
 			// При сохранении новой записи
 			if(this.Text == "Новая запись."){
-				SQlCommand.SqlCommand = "INSERT INTO firms (firm_name, firm_details, firm_address_phone, firm_trade_representative, firm_additionally, firm_type, firm_folder, firm_delete) VALUE ('" + textBox1.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "', '" + textBox2.Text + "', '" + textBox5.Text + "', 0, '" + comboBox1.Text + "', 0)";
+				SQlCommand.SqlCommand = "INSERT INTO firms (firm_name, firm_details, firm_address_phone, firm_trade_representative, firm_additionally, firm_type, firm_folder, firm_delete) VALUES ('" + textBox1.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "', '" + textBox2.Text + "', '" + textBox5.Text + "', 0, '" + comboBox1.Text + "', 0)";
 				if(SQlCommand.ExecuteNonQuery()){
 					// ИСТОРИЯ: Запись в журнал истории обновлений
 					ClassServer.SaveUpdateInBase(3, DateTime.Now.ToString(), "", "Создание новой записи.", "");

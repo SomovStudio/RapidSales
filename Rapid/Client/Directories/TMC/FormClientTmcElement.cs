@@ -107,7 +107,7 @@ namespace Rapid
 			
 			// При сохранении новой записи
 			if(this.Text == "Новая запись."){
-				SQlCommand.SqlCommand = "INSERT INTO tmc (tmc_name, tmc_type_tax, tmc_units, tmc_buy, tmc_sale, tmc_store, tmc_additionally, tmc_type, tmc_folder, tmc_delete) VALUE ('" + textBox1.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "', " + textBox4.Text + ", " + textBox5.Text + ", '" + textBox7.Text + "', '" + textBox6.Text + "', 0, '" + comboBox1.Text + "', 0)";
+				SQlCommand.SqlCommand = "INSERT INTO tmc (tmc_name, tmc_type_tax, tmc_units, tmc_buy, tmc_sale, tmc_store, tmc_additionally, tmc_type, tmc_folder, tmc_delete) VALUES ('" + textBox1.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "', " + textBox4.Text + ", " + textBox5.Text + ", '" + textBox7.Text + "', '" + textBox6.Text + "', 0, '" + comboBox1.Text + "', 0)";
 				if(SQlCommand.ExecuteNonQuery()){
 					// Создание записи в остатках
 					ClassBalance.BalanceNew(textBox1.Text);

@@ -84,7 +84,7 @@ namespace Rapid
 			
 			// При сохранении новой записи
 			if(this.Text == "Новая запись."){
-				SQlCommand.SqlCommand = "INSERT INTO store (store_name, store_additionally) VALUE ('" + textBox1.Text + "', '" + textBox2.Text + "')";
+				SQlCommand.SqlCommand = "INSERT INTO store (store_name, store_additionally) VALUES ('" + textBox1.Text + "', '" + textBox2.Text + "')";
 				if(SQlCommand.ExecuteNonQuery()){
 					// ИСТОРИЯ: Запись в журнал истории обновлений
 					ClassServer.SaveUpdateInBase(5, DateTime.Now.ToString(), "", "Создание новой записи.", "");
