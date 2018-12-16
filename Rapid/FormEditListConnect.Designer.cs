@@ -52,9 +52,6 @@ namespace Rapid
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.textBoxAdminPass = new System.Windows.Forms.TextBox();
-			this.label8 = new System.Windows.Forms.Label();
 			this.button1 = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
 			this.panel2 = new System.Windows.Forms.Panel();
@@ -63,7 +60,6 @@ namespace Rapid
 			this.panel3 = new System.Windows.Forms.Panel();
 			this.label9 = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
-			this.groupBox1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.panel3.SuspendLayout();
 			this.SuspendLayout();
@@ -172,6 +168,7 @@ namespace Rapid
 			this.textBox4.Name = "textBox4";
 			this.textBox4.Size = new System.Drawing.Size(396, 20);
 			this.textBox4.TabIndex = 10;
+			this.textBox4.Text = "sa";
 			// 
 			// textBox3
 			// 
@@ -190,6 +187,7 @@ namespace Rapid
 			this.textBox2.Name = "textBox2";
 			this.textBox2.Size = new System.Drawing.Size(396, 20);
 			this.textBox2.TabIndex = 8;
+			this.textBox2.Text = "localhost\\SQLEXPRESS";
 			// 
 			// textBox1
 			// 
@@ -199,6 +197,7 @@ namespace Rapid
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(396, 20);
 			this.textBox1.TabIndex = 7;
+			this.textBox1.Text = "Информационная база №";
 			// 
 			// label7
 			// 
@@ -217,34 +216,6 @@ namespace Rapid
 			this.label6.TabIndex = 5;
 			this.label6.Text = "Адрес администратора (браузер):";
 			this.label6.Visible = false;
-			// 
-			// groupBox1
-			// 
-			this.groupBox1.Controls.Add(this.textBoxAdminPass);
-			this.groupBox1.Controls.Add(this.label8);
-			this.groupBox1.Location = new System.Drawing.Point(150, 50);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(357, 95);
-			this.groupBox1.TabIndex = 8;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Контроль безопасности:";
-			this.groupBox1.Visible = false;
-			// 
-			// textBoxAdminPass
-			// 
-			this.textBoxAdminPass.Location = new System.Drawing.Point(18, 52);
-			this.textBoxAdminPass.Name = "textBoxAdminPass";
-			this.textBoxAdminPass.PasswordChar = '*';
-			this.textBoxAdminPass.Size = new System.Drawing.Size(333, 20);
-			this.textBoxAdminPass.TabIndex = 1;
-			// 
-			// label8
-			// 
-			this.label8.Location = new System.Drawing.Point(18, 29);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(205, 23);
-			this.label8.TabIndex = 0;
-			this.label8.Text = "Введине пароль администратора:";
 			// 
 			// button1
 			// 
@@ -326,7 +297,6 @@ namespace Rapid
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(496, 267);
 			this.Controls.Add(this.panel3);
-			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.panel2);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.button1);
@@ -339,8 +309,6 @@ namespace Rapid
 			this.Load += new System.EventHandler(this.FormEditListConnectLoad);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
 			this.panel2.ResumeLayout(false);
 			this.panel3.ResumeLayout(false);
 			this.ResumeLayout(false);
@@ -351,9 +319,6 @@ namespace Rapid
 		private System.Windows.Forms.Button button3;
 		private System.Windows.Forms.Button button4;
 		private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.TextBox textBoxAdminPass;
-		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.Button button1;
 		public System.Windows.Forms.TextBox textBox6;

@@ -138,7 +138,6 @@ namespace Rapid
 		
 		void FormEditListConnectLoad(object sender, EventArgs e)
 		{
-			groupBox1.Visible = false;
 			panel1.Visible = true;
 			panel2.Visible = true;
 		}
