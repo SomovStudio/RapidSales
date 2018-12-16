@@ -84,7 +84,7 @@ namespace Rapid
 				OrderTS_MySQL.SelectSqlCommand = "SELECT id_tabularSection, tabularSection_tmc, tabularSection_units, tabularSection_number, tabularSection_price, tabularSection_NDS, tabularSection_sum, tabularSection_total, tabularSection_id_doc  FROM tabularsection WHERE (tabularSection_id_doc = '" + DocID + "')";
 				
 				OrderTS_MySQL.InsertSqlCommand = "INSERT INTO tabularsection (tabularSection_tmc, tabularSection_units, tabularSection_number, tabularSection_price, tabularSection_NDS, tabularSection_sum, tabularSection_total, tabularSection_id_doc) " +
-														"VALUE (@tabularSection_tmc, @tabularSection_units, @tabularSection_number, @tabularSection_price, @tabularSection_NDS, @tabularSection_sum, @tabularSection_total, @tabularSection_id_doc)";
+														"VALUES (@tabularSection_tmc, @tabularSection_units, @tabularSection_number, @tabularSection_price, @tabularSection_NDS, @tabularSection_sum, @tabularSection_total, @tabularSection_id_doc)";
 				OrderTS_MySQL.InsertParametersAdd("@tabularSection_tmc", SqlDbType.VarChar, 250, "tabularSection_tmc", UpdateRowSource.None);
 				OrderTS_MySQL.InsertParametersAdd("@tabularSection_units", SqlDbType.VarChar, 250, "tabularSection_units", UpdateRowSource.None);
 				OrderTS_MySQL.InsertParametersAdd("@tabularSection_number", SqlDbType.Float, 10, "tabularSection_number", UpdateRowSource.None);
@@ -517,7 +517,7 @@ namespace Rapid
 			// При создании новой записи
 			if(this.Text == "Новая документ."){
 				OrderMySQL.SqlCommand = "INSERT INTO journal (journal_id_doc, journal_date, journal_number, journal_user_autor, journal_type, journal_store, journal_firm_buyer, journal_firm_buyer_details, journal_firm_seller, journal_firm_seller_details, journal_staff_trade_representative, journal_typeTax, journal_sum, journal_tax, journal_total, journal_delete) " +
-					"VALUE ('" + DocID + "', '" + dateTimePicker1.Text + "', '" + textBox1.Text + "', '" + label12.Text + "', 'Заказ', '" + textBox6.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox5.Text + "', '" + textBox4.Text + "', '" + textBox7.Text + "', 'Налог 20%', " + labelSum.Text + ", " + labelNDS.Text + ", "+ labelTotal.Text + ", 0)";
+					"VALUES ('" + DocID + "', '" + dateTimePicker1.Text + "', '" + textBox1.Text + "', '" + label12.Text + "', 'Заказ', '" + textBox6.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox5.Text + "', '" + textBox4.Text + "', '" + textBox7.Text + "', 'Налог 20%', " + labelSum.Text + ", " + labelNDS.Text + ", "+ labelTotal.Text + ", 0)";
 				if(OrderMySQL.ExecuteNonQuery()){
 					if(OrderTS_MySQL.ExecuteUpdate(OrderTS_DataSet, "tabularsection")){
 						// ИСТОРИЯ: Запись в журнал истории обновлений

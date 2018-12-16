@@ -84,7 +84,7 @@ namespace Rapid
 				ExpenseTS_MySQL.SelectSqlCommand = "SELECT id_tabularSection, tabularSection_tmc, tabularSection_units, tabularSection_number, tabularSection_price, tabularSection_NDS, tabularSection_sum, tabularSection_total, tabularSection_id_doc  FROM tabularsection WHERE (tabularSection_id_doc = '" + DocID + "')";
 				
 				ExpenseTS_MySQL.InsertSqlCommand = "INSERT INTO tabularsection (tabularSection_tmc, tabularSection_units, tabularSection_number, tabularSection_price, tabularSection_NDS, tabularSection_sum, tabularSection_total, tabularSection_id_doc) " +
-														"VALUE (@tabularSection_tmc, @tabularSection_units, @tabularSection_number, @tabularSection_price, @tabularSection_NDS, @tabularSection_sum, @tabularSection_total, @tabularSection_id_doc)";
+														"VALUES (@tabularSection_tmc, @tabularSection_units, @tabularSection_number, @tabularSection_price, @tabularSection_NDS, @tabularSection_sum, @tabularSection_total, @tabularSection_id_doc)";
 				ExpenseTS_MySQL.InsertParametersAdd("@tabularSection_tmc", SqlDbType.VarChar, 250, "tabularSection_tmc", UpdateRowSource.None);
 				ExpenseTS_MySQL.InsertParametersAdd("@tabularSection_units", SqlDbType.VarChar, 250, "tabularSection_units", UpdateRowSource.None);
 				ExpenseTS_MySQL.InsertParametersAdd("@tabularSection_number", SqlDbType.Float, 10, "tabularSection_number", UpdateRowSource.None);
@@ -537,7 +537,7 @@ namespace Rapid
 			// При создании новой записи
 			if(this.Text == "Новая документ." || this.Text == "Ввод на основании Заказа."){
 				ExpenseMySQL.SqlCommand = "INSERT INTO journal (journal_id_doc, journal_date, journal_number, journal_user_autor, journal_type, journal_store, journal_firm_buyer, journal_firm_buyer_details, journal_firm_seller, journal_firm_seller_details, journal_staff_trade_representative, journal_typeTax, journal_sum, journal_tax, journal_total, journal_delete) " +
-					"VALUE ('" + DocID + "', '" + dateTimePicker1.Text + "', '" + textBox1.Text + "', '" + label12.Text + "', 'Расходная Накладная', '" + textBox6.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox5.Text + "', '" + textBox4.Text + "', '" + textBox7.Text + "', 'Налог 20%', " + labelSum.Text + ", " + labelNDS.Text + ", "+ labelTotal.Text + ", 0)";
+					"VALUES ('" + DocID + "', '" + dateTimePicker1.Text + "', '" + textBox1.Text + "', '" + label12.Text + "', 'Расходная Накладная', '" + textBox6.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox5.Text + "', '" + textBox4.Text + "', '" + textBox7.Text + "', 'Налог 20%', " + labelSum.Text + ", " + labelNDS.Text + ", "+ labelTotal.Text + ", 0)";
 				if(ExpenseMySQL.ExecuteNonQuery()){
 					if(ExpenseTS_MySQL.ExecuteUpdate(ExpenseTS_DataSet, "tabularsection")){
 						// ОСТАТКИ: Уменьшение остатков
