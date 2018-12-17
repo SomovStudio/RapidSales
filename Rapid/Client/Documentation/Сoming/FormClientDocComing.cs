@@ -80,42 +80,70 @@ namespace Rapid
 		void LoadTabularSection()
 		{
 			// Формируем табличную часть
-				ComingTS_DataSet.Clear();
-				ComingTS_DataSet.DataSetName = "tabularsection";
-				ComingTS_MySQL.SelectSqlCommand = "SELECT id_tabularSection, tabularSection_tmc, tabularSection_units, tabularSection_number, tabularSection_price, tabularSection_NDS, tabularSection_sum, tabularSection_total, tabularSection_id_doc  FROM tabularsection WHERE (tabularSection_id_doc = '" + DocID + "')";
-				
-				ComingTS_MySQL.InsertSqlCommand = "INSERT INTO tabularsection (tabularSection_tmc, tabularSection_units, tabularSection_number, tabularSection_price, tabularSection_NDS, tabularSection_sum, tabularSection_total, tabularSection_id_doc) " +
-														"VALUES (@tabularSection_tmc, @tabularSection_units, @tabularSection_number, @tabularSection_price, @tabularSection_NDS, @tabularSection_sum, @tabularSection_total, @tabularSection_id_doc)";
-				ComingTS_MySQL.InsertParametersAdd("@tabularSection_tmc", SqlDbType.VarChar, 250, "tabularSection_tmc", UpdateRowSource.None);
-				ComingTS_MySQL.InsertParametersAdd("@tabularSection_units", SqlDbType.VarChar, 250, "tabularSection_units", UpdateRowSource.None);
-				ComingTS_MySQL.InsertParametersAdd("@tabularSection_number", SqlDbType.Float, 10, "tabularSection_number", UpdateRowSource.None);
-				ComingTS_MySQL.InsertParametersAdd("@tabularSection_price", SqlDbType.Float, 10, "tabularSection_price", UpdateRowSource.None);
-				ComingTS_MySQL.InsertParametersAdd("@tabularSection_NDS", SqlDbType.Float, 10, "tabularSection_NDS", UpdateRowSource.None);
-				ComingTS_MySQL.InsertParametersAdd("@tabularSection_sum", SqlDbType.Float, 10, "tabularSection_sum", UpdateRowSource.None);
-				ComingTS_MySQL.InsertParametersAdd("@tabularSection_total", SqlDbType.Float, 10, "tabularSection_total", UpdateRowSource.None);
-				ComingTS_MySQL.InsertParametersAdd("@tabularSection_id_doc", SqlDbType.VarChar, 250, "tabularSection_id_doc", UpdateRowSource.None);
-						
-				
-				ComingTS_MySQL.UpdateSqlCommand = "UPDATE tabularsection SET tabularSection_tmc = @tabularSection_tmc, tabularSection_units = @tabularSection_units, tabularSection_number = @tabularSection_number, tabularSection_price = @tabularSection_price, tabularSection_NDS = @tabularSection_NDS, tabularSection_sum = @tabularSection_sum, tabularSection_total = @tabularSection_total, tabularSection_id_doc = @tabularSection_id_doc WHERE (id_tabularSection = @id_tabularSection)";
-				ComingTS_MySQL.UpdateParametersAdd("@tabularSection_tmc", SqlDbType.VarChar, 250, "tabularSection_tmc", UpdateRowSource.None);
-				ComingTS_MySQL.UpdateParametersAdd("@tabularSection_units", SqlDbType.VarChar, 250, "tabularSection_units", UpdateRowSource.None);
-				ComingTS_MySQL.UpdateParametersAdd("@tabularSection_number", SqlDbType.Float, 10, "tabularSection_number", UpdateRowSource.None);
-				ComingTS_MySQL.UpdateParametersAdd("@tabularSection_price", SqlDbType.Float, 10, "tabularSection_price", UpdateRowSource.None);
-				ComingTS_MySQL.UpdateParametersAdd("@tabularSection_NDS", SqlDbType.Float, 10, "tabularSection_NDS", UpdateRowSource.None);
-				ComingTS_MySQL.UpdateParametersAdd("@tabularSection_sum", SqlDbType.Float, 10, "tabularSection_sum", UpdateRowSource.None);
-				ComingTS_MySQL.UpdateParametersAdd("@tabularSection_total", SqlDbType.Float, 10, "tabularSection_total", UpdateRowSource.None);
-				ComingTS_MySQL.UpdateParametersAdd("@tabularSection_id_doc", SqlDbType.VarChar, 250, "tabularSection_id_doc", UpdateRowSource.None);
-				ComingTS_MySQL.UpdateParametersAdd("@id_tabularSection", SqlDbType.SmallInt, 11, "id_tabularSection", UpdateRowSource.None);
-				
-				ComingTS_MySQL.DeleteSqlCommand = "DELETE FROM tabularsection WHERE (id_tabularSection = @id_tabularSection)";
-				ComingTS_MySQL.DeleteParametersAdd("@id_tabularSection", SqlDbType.SmallInt, 11, "id_tabularSection", UpdateRowSource.None);
-				
-				if(ComingTS_MySQL.ExecuteFill(ComingTS_DataSet, "tabularsection")){
-					// формируем табличную часть
-					dataGrid1.DataSource = ComingTS_DataSet;		//.Tables["tabularsection"];
-					dataGrid1.DataMember = "tabularsection";
+			ComingTS_DataSet.Clear();
+			ComingTS_DataSet.DataSetName = "tabularsection";
+			ComingTS_MySQL.SelectSqlCommand = "SELECT id_tabularSection, tabularSection_tmc, tabularSection_units, tabularSection_number, tabularSection_price, tabularSection_NDS, tabularSection_sum, tabularSection_total, tabularSection_id_doc  FROM tabularsection WHERE (tabularSection_id_doc = '" + DocID + "')";
+			
+			ComingTS_MySQL.InsertSqlCommand = "INSERT INTO tabularsection (tabularSection_tmc, tabularSection_units, tabularSection_number, tabularSection_price, tabularSection_NDS, tabularSection_sum, tabularSection_total, tabularSection_id_doc) " +
+													"VALUES (@tabularSection_tmc, @tabularSection_units, @tabularSection_number, @tabularSection_price, @tabularSection_NDS, @tabularSection_sum, @tabularSection_total, @tabularSection_id_doc)";
+			ComingTS_MySQL.InsertParametersAdd("@tabularSection_tmc", SqlDbType.VarChar, 250, "tabularSection_tmc", UpdateRowSource.None);
+			ComingTS_MySQL.InsertParametersAdd("@tabularSection_units", SqlDbType.VarChar, 250, "tabularSection_units", UpdateRowSource.None);
+			ComingTS_MySQL.InsertParametersAdd("@tabularSection_number", SqlDbType.Float, 10, "tabularSection_number", UpdateRowSource.None);
+			ComingTS_MySQL.InsertParametersAdd("@tabularSection_price", SqlDbType.Float, 10, "tabularSection_price", UpdateRowSource.None);
+			ComingTS_MySQL.InsertParametersAdd("@tabularSection_NDS", SqlDbType.Float, 10, "tabularSection_NDS", UpdateRowSource.None);
+			ComingTS_MySQL.InsertParametersAdd("@tabularSection_sum", SqlDbType.Float, 10, "tabularSection_sum", UpdateRowSource.None);
+			ComingTS_MySQL.InsertParametersAdd("@tabularSection_total", SqlDbType.Float, 10, "tabularSection_total", UpdateRowSource.None);
+			ComingTS_MySQL.InsertParametersAdd("@tabularSection_id_doc", SqlDbType.VarChar, 250, "tabularSection_id_doc", UpdateRowSource.None);
 					
-				} else ClassForms.Rapid_Client.MessageConsole("Приходная Накладная: Ошибка формирования пустой табличной части.", true);
+			
+			ComingTS_MySQL.UpdateSqlCommand = "UPDATE tabularsection SET tabularSection_tmc = @tabularSection_tmc, tabularSection_units = @tabularSection_units, tabularSection_number = @tabularSection_number, tabularSection_price = @tabularSection_price, tabularSection_NDS = @tabularSection_NDS, tabularSection_sum = @tabularSection_sum, tabularSection_total = @tabularSection_total, tabularSection_id_doc = @tabularSection_id_doc WHERE (id_tabularSection = @id_tabularSection)";
+			ComingTS_MySQL.UpdateParametersAdd("@tabularSection_tmc", SqlDbType.VarChar, 250, "tabularSection_tmc", UpdateRowSource.None);
+			ComingTS_MySQL.UpdateParametersAdd("@tabularSection_units", SqlDbType.VarChar, 250, "tabularSection_units", UpdateRowSource.None);
+			ComingTS_MySQL.UpdateParametersAdd("@tabularSection_number", SqlDbType.Float, 10, "tabularSection_number", UpdateRowSource.None);
+			ComingTS_MySQL.UpdateParametersAdd("@tabularSection_price", SqlDbType.Float, 10, "tabularSection_price", UpdateRowSource.None);
+			ComingTS_MySQL.UpdateParametersAdd("@tabularSection_NDS", SqlDbType.Float, 10, "tabularSection_NDS", UpdateRowSource.None);
+			ComingTS_MySQL.UpdateParametersAdd("@tabularSection_sum", SqlDbType.Float, 10, "tabularSection_sum", UpdateRowSource.None);
+			ComingTS_MySQL.UpdateParametersAdd("@tabularSection_total", SqlDbType.Float, 10, "tabularSection_total", UpdateRowSource.None);
+			ComingTS_MySQL.UpdateParametersAdd("@tabularSection_id_doc", SqlDbType.VarChar, 250, "tabularSection_id_doc", UpdateRowSource.None);
+			ComingTS_MySQL.UpdateParametersAdd("@id_tabularSection", SqlDbType.SmallInt, 11, "id_tabularSection", UpdateRowSource.None);
+			
+			ComingTS_MySQL.DeleteSqlCommand = "DELETE FROM tabularsection WHERE (id_tabularSection = @id_tabularSection)";
+			ComingTS_MySQL.DeleteParametersAdd("@id_tabularSection", SqlDbType.SmallInt, 11, "id_tabularSection", UpdateRowSource.None);
+			
+			if(ComingTS_MySQL.ExecuteFill(ComingTS_DataSet, "tabularsection")){
+				// формируем табличную часть
+				dataGrid1.DataSource = ComingTS_DataSet;		//.Tables["tabularsection"];
+				dataGrid1.DataMember = "tabularsection";
+				
+			} else ClassForms.Rapid_Client.MessageConsole("Приходная Накладная: Ошибка формирования пустой табличной части.", true);
+		}
+		
+		/* Загрузка табличной части (на основании заказа) */
+		void basedTabularSection(String basedDocID)
+		{
+			DataSet basedDS = new DataSet();
+			basedDS.Clear();
+			basedDS.DataSetName = "tabularsection";
+			
+			MsSQLFull based = new MsSQLFull();
+			based.SelectSqlCommand = "SELECT id_tabularSection, tabularSection_tmc, tabularSection_units, tabularSection_number, tabularSection_price, tabularSection_NDS, tabularSection_sum, tabularSection_total, tabularSection_id_doc  FROM tabularsection WHERE (tabularSection_id_doc = '" + basedDocID + "')";
+			if(based.ExecuteFill(basedDS, "tabularsection")){
+				
+				foreach (DataRow row in basedDS.Tables[0].Rows)
+				{
+					DataRow newRow = ComingTS_DataSet.Tables[0].NewRow();
+					newRow["tabularSection_tmc"] = row["tabularSection_tmc"];
+					newRow["tabularSection_units"] = row["tabularSection_units"];
+					newRow["tabularSection_number"] = row["tabularSection_number"];
+					newRow["tabularSection_price"] = row["tabularSection_price"];
+					newRow["tabularSection_NDS"] = row["tabularSection_NDS"];
+					newRow["tabularSection_sum"] = row["tabularSection_sum"];
+					newRow["tabularSection_total"] = row["tabularSection_total"];
+					newRow["tabularSection_id_doc"] = DocID;
+					
+					ComingTS_DataSet.Tables[0].Rows.Add(newRow);
+				}
+			} else ClassForms.Rapid_Client.MessageConsole("Приходная Накладная: Ошибка загрузки табличной части заказа.", true);
 		}
 		
 		/* Копия исходной табличной части */
@@ -147,7 +175,7 @@ namespace Rapid
 				ClassForms.Rapid_Client.MessageConsole("Приходная Накладная: Создание нового документа.", false);
 			}
 			// При изменении записи
-			if(this.Text == "Изменить документ." || this.Text == "Ввод на основании Заказа."){
+			if(this.Text == "Изменить документ."){
 				// Загружаем основные данные.
 				JurnalDataSet.Clear();
 				JurnalDataSet.DataSetName = "journal";
@@ -181,12 +209,35 @@ namespace Rapid
 			}
 			// При вводе документа за основании Заказ
 			if(this.Text == "Ввод на основании Заказа."){
-				// формируем уникальный идентификатор документа
-				DocID = "COMING:" + DateTime.Now.ToString();
-				foreach(DataRow row in ComingTS_DataSet.Tables["tabularsection"].Rows)
-        		{
-					row["tabularSection_id_doc"] = DocID;
-				}
+				// Загружаем основные данные.
+				JurnalDataSet.Clear();
+				JurnalDataSet.DataSetName = "journal";
+				JurnalMySQL.SelectSqlCommand = "SELECT * FROM journal WHERE (id_journal = " + ActionID + ")";
+				if(JurnalMySQL.ExecuteFill(JurnalDataSet, "journal")){
+					// загрузка полученной информации
+					DataTable _table = JurnalDataSet.Tables["journal"];
+					DocID = "COMING:" + DateTime.Now.ToString();
+					textBox1.Text = "ПН" + _table.Rows[0]["journal_number"].ToString();
+					dateTimePicker1.Text = _table.Rows[0]["journal_date"].ToString();
+					label12.Text = _table.Rows[0]["journal_user_autor"].ToString();
+					// информация о продавец
+					textBox5.Text = _table.Rows[0]["journal_firm_seller"].ToString();
+					textBox4.Text = _table.Rows[0]["journal_firm_seller_details"].ToString();
+					// информация о покупателе
+					textBox2.Text = _table.Rows[0]["journal_firm_buyer"].ToString();
+					textBox3.Text = _table.Rows[0]["journal_firm_buyer_details"].ToString();
+					// информация: склад и торг. представитель.
+					textBox6.Text = _table.Rows[0]["journal_store"].ToString();
+					// Загрузка информации итогов
+					labelSum.Text = ClassConversion.StringToMoney(_table.Rows[0]["journal_sum"].ToString());
+					labelNDS.Text = ClassConversion.StringToMoney(_table.Rows[0]["journal_tax"].ToString());
+					labelTotal.Text = ClassConversion.StringToMoney(_table.Rows[0]["journal_total"].ToString());
+					// Загрузка информации табличной части.
+					LoadTabularSection();
+					// Загрузка данных из табличной части заказа.
+					basedTabularSection(_table.Rows[0]["journal_id_doc"].ToString());
+				} else ClassForms.Rapid_Client.MessageConsole("Приходная Накладная: Ошибка загрузки основной информации.", true);
+				ClassForms.Rapid_Client.MessageConsole("Приходная Накладная: Создание документа на основании Заказа.", false);
 			}
 		}
 		
@@ -515,7 +566,7 @@ namespace Rapid
 			// При создании новой записи
 			if(this.Text == "Новая документ." || this.Text == "Ввод на основании Заказа."){
 				ComingMySQL.SqlCommand = "INSERT INTO journal (journal_id_doc, journal_date, journal_number, journal_user_autor, journal_type, journal_store, journal_firm_buyer, journal_firm_buyer_details, journal_firm_seller, journal_firm_seller_details, journal_staff_trade_representative, journal_typeTax, journal_sum, journal_tax, journal_total, journal_delete) " +
-					"VALUES ('" + DocID + "', '" + dateTimePicker1.Text + "', '" + textBox1.Text + "', '" + label12.Text + "', 'Приходная Накладная', '" + textBox6.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox5.Text + "', '" + textBox4.Text + "', '', 'Налог 20%', " + labelSum.Text + ", " + labelNDS.Text + ", "+ labelTotal.Text + ", 0)";
+					"VALUES ('" + DocID + "', '" + dateTimePicker1.Text + "', '" + textBox1.Text + "', '" + label12.Text + "', 'Приходная Накладная', '" + textBox6.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox5.Text + "', '" + textBox4.Text + "', '', '" + ClassSelectConst.constantValue("Вид НДС") + "', " + labelSum.Text + ", " + labelNDS.Text + ", "+ labelTotal.Text + ", 0)";
 				if(ComingMySQL.ExecuteNonQuery()){
 					if(ComingTS_MySQL.ExecuteUpdate(ComingTS_DataSet, "tabularsection")){
 						// ОСТАТКИ: Увеличение остатков

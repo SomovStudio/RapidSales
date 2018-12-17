@@ -117,6 +117,34 @@ namespace Rapid
 				} else ClassForms.Rapid_Client.MessageConsole("Расходная Накладная: Ошибка формирования пустой табличной части.", true);
 		}
 		
+		/* Загрузка табличной части (на основании заказа) */
+		void basedTabularSection(String basedDocID)
+		{
+			DataSet basedDS = new DataSet();
+			basedDS.Clear();
+			basedDS.DataSetName = "tabularsection";
+			
+			MsSQLFull based = new MsSQLFull();
+			based.SelectSqlCommand = "SELECT id_tabularSection, tabularSection_tmc, tabularSection_units, tabularSection_number, tabularSection_price, tabularSection_NDS, tabularSection_sum, tabularSection_total, tabularSection_id_doc  FROM tabularsection WHERE (tabularSection_id_doc = '" + basedDocID + "')";
+			if(based.ExecuteFill(basedDS, "tabularsection")){
+				
+				foreach (DataRow row in basedDS.Tables[0].Rows)
+				{
+					DataRow newRow = ExpenseTS_DataSet.Tables[0].NewRow();
+					newRow["tabularSection_tmc"] = row["tabularSection_tmc"];
+					newRow["tabularSection_units"] = row["tabularSection_units"];
+					newRow["tabularSection_number"] = row["tabularSection_number"];
+					newRow["tabularSection_price"] = row["tabularSection_price"];
+					newRow["tabularSection_NDS"] = row["tabularSection_NDS"];
+					newRow["tabularSection_sum"] = row["tabularSection_sum"];
+					newRow["tabularSection_total"] = row["tabularSection_total"];
+					newRow["tabularSection_id_doc"] = DocID;
+					
+					ExpenseTS_DataSet.Tables[0].Rows.Add(newRow);
+				}
+			} else ClassForms.Rapid_Client.MessageConsole("Приходная Накладная: Ошибка загрузки табличной части заказа.", true);
+		}
+		
 		/* Копия исходной табличной части */
 		void OldTabularSection()
 		{
@@ -146,7 +174,7 @@ namespace Rapid
 				ClassForms.Rapid_Client.MessageConsole("Расходная Накладная: Создание нового документа.", false);
 			}
 			// При изменении записи
-			if(this.Text == "Изменить документ." || this.Text == "Ввод на основании Заказа."){
+			if(this.Text == "Изменить документ."){
 				// Загружаем основные данные.
 				JurnalDataSet.Clear();
 				JurnalDataSet.DataSetName = "journal";
@@ -177,16 +205,41 @@ namespace Rapid
 					OldTabularSection();
 				} else ClassForms.Rapid_Client.MessageConsole("Расходная Накладная: Ошибка загрузки основной информации.", true);
 				
-				ClassForms.Rapid_Client.MessageConsole("Приходная Накладная: Открытие документа для ввода изменений.", false);
+				ClassForms.Rapid_Client.MessageConsole("Расходная Накладная: Открытие документа для ввода изменений.", false);
 			}
 			// При вводе документа за основании Заказ
 			if(this.Text == "Ввод на основании Заказа."){
-				// формируем уникальный идентификатор документа
-				DocID = "EXPENSE:" + DateTime.Now.ToString();
-				foreach(DataRow row in ExpenseTS_DataSet.Tables["tabularsection"].Rows)
-        		{
-					row["tabularSection_id_doc"] = DocID;
-				}
+				// Загружаем основные данные.
+				JurnalDataSet.Clear();
+				JurnalDataSet.DataSetName = "journal";
+				JurnalMySQL.SelectSqlCommand = "SELECT * FROM journal WHERE (id_journal = " + ActionID + ")";
+				if(JurnalMySQL.ExecuteFill(JurnalDataSet, "journal")){
+					// загрузка полученной информации
+					DataTable _table = JurnalDataSet.Tables["journal"];
+					DocID = "EXPENSE:" + DateTime.Now.ToString();
+					textBox1.Text = "РН" + _table.Rows[0]["journal_number"].ToString();
+					dateTimePicker1.Text = _table.Rows[0]["journal_date"].ToString();
+					label12.Text = _table.Rows[0]["journal_user_autor"].ToString();
+					// информация о продавец
+					textBox5.Text = _table.Rows[0]["journal_firm_seller"].ToString();
+					textBox4.Text = _table.Rows[0]["journal_firm_seller_details"].ToString();
+					// информация о покупателе
+					textBox2.Text = _table.Rows[0]["journal_firm_buyer"].ToString();
+					textBox3.Text = _table.Rows[0]["journal_firm_buyer_details"].ToString();
+					// информация: склад и торг. представитель.
+					textBox6.Text = _table.Rows[0]["journal_store"].ToString();
+					textBox7.Text = _table.Rows[0]["journal_staff_trade_representative"].ToString();
+					// Загрузка информации итогов
+					labelSum.Text = ClassConversion.StringToMoney(_table.Rows[0]["journal_sum"].ToString());
+					labelNDS.Text = ClassConversion.StringToMoney(_table.Rows[0]["journal_tax"].ToString());
+					labelTotal.Text = ClassConversion.StringToMoney(_table.Rows[0]["journal_total"].ToString());
+					// Загрузка информации табличной части.
+					LoadTabularSection();
+					// Загрузка данных из табличной части заказа.
+					basedTabularSection(_table.Rows[0]["journal_id_doc"].ToString());
+				} else ClassForms.Rapid_Client.MessageConsole("Расходная Накладная: Ошибка загрузки основной информации.", true);
+				
+				ClassForms.Rapid_Client.MessageConsole("Расходная Накладная: Создание документа на основании Заказа.", false);
 			}
 		}
 		
@@ -537,7 +590,7 @@ namespace Rapid
 			// При создании новой записи
 			if(this.Text == "Новая документ." || this.Text == "Ввод на основании Заказа."){
 				ExpenseMySQL.SqlCommand = "INSERT INTO journal (journal_id_doc, journal_date, journal_number, journal_user_autor, journal_type, journal_store, journal_firm_buyer, journal_firm_buyer_details, journal_firm_seller, journal_firm_seller_details, journal_staff_trade_representative, journal_typeTax, journal_sum, journal_tax, journal_total, journal_delete) " +
-					"VALUES ('" + DocID + "', '" + dateTimePicker1.Text + "', '" + textBox1.Text + "', '" + label12.Text + "', 'Расходная Накладная', '" + textBox6.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox5.Text + "', '" + textBox4.Text + "', '" + textBox7.Text + "', 'Налог 20%', " + labelSum.Text + ", " + labelNDS.Text + ", "+ labelTotal.Text + ", 0)";
+					"VALUES ('" + DocID + "', '" + dateTimePicker1.Text + "', '" + textBox1.Text + "', '" + label12.Text + "', 'Расходная Накладная', '" + textBox6.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox5.Text + "', '" + textBox4.Text + "', '" + textBox7.Text + "', '" + ClassSelectConst.constantValue("Вид НДС") + "', " + labelSum.Text + ", " + labelNDS.Text + ", "+ labelTotal.Text + ", 0)";
 				if(ExpenseMySQL.ExecuteNonQuery()){
 					if(ExpenseTS_MySQL.ExecuteUpdate(ExpenseTS_DataSet, "tabularsection")){
 						// ОСТАТКИ: Уменьшение остатков
