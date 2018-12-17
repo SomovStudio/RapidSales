@@ -548,7 +548,7 @@ namespace Rapid
 						 * Отражено налоговое обязательство по НДС 702 / 641
 						 * Получена оплата от покупателя 311 / 361
 						*/
-						ClassOperations.OperationAdd(dateTimePicker1.Text, "36", "70", labelSum.Text, "Отгружен товар покупателю и отражен доход от реализации", DocID);
+						ClassOperations.OperationAdd(dateTimePicker1.Text, "36", "70", labelSum.Text, "Отгружен товар покупателю, доход от реализации", DocID);
 						ClassOperations.OperationAdd(dateTimePicker1.Text, "70", "64", labelNDS.Text, "Отражено налоговое обязательство по НДС", DocID);
 						ClassOperations.OperationAdd(dateTimePicker1.Text, "31", "36", labelTotal.Text, "Получена оплата от покупателя", DocID);
 						// ИСТОРИЯ: Запись в журнал истории обновлений
@@ -574,7 +574,7 @@ namespace Rapid
 						 * Получена оплата от покупателя 311 / 361
 						*/
 						ClassOperations.OperationDelete(DocID, "");
-						ClassOperations.OperationAdd(dateTimePicker1.Text, "36", "70", labelSum.Text, "Отгружен товар покупателю и отражен доход от реализации", DocID);
+						ClassOperations.OperationAdd(dateTimePicker1.Text, "36", "70", labelSum.Text, "Отгружен товар покупателю, доход от реализации", DocID);
 						ClassOperations.OperationAdd(dateTimePicker1.Text, "70", "64", labelNDS.Text, "Отражено налоговое обязательство по НДС", DocID);
 						ClassOperations.OperationAdd(dateTimePicker1.Text, "31", "36", labelTotal.Text, "Получена оплата от покупателя", DocID);
 						// ИСТОРИЯ: Запись в журнал истории обновлений

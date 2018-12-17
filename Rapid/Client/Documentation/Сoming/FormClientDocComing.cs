@@ -126,7 +126,7 @@ namespace Rapid
 			OldDS.DataSetName = "tabularsection";
 			if(ComingTS_MySQL.ExecuteFill(OldDS, "tabularsection")){
 				// формируем табличную часть
-				ClassForms.Rapid_Client.MessageConsole("Приходная Накладная: Успешно сформированиа копии табличной части.", false);	
+				ClassForms.Rapid_Client.MessageConsole("Приходная Накладная: Успешно сформирована копии табличной части.", false);	
 			} else ClassForms.Rapid_Client.MessageConsole("Приходная Накладная: Ошибка формирования копии табличной части.", true);
 		}
 		
