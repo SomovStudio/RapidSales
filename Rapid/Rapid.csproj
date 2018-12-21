@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Interop.ADOX">
-      <HintPath>G:\Program Code\BEE v 1.0\BEEDesigner\bin\Interop.ADOX.dll</HintPath>
+      <HintPath>dlls\Interop.ADOX.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
