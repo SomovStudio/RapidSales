@@ -141,8 +141,8 @@
     <Compile Include="Client\Documentation\TabularSection\FormClientDocTableElement.Designer.cs">
       <DependentUpon>FormClientDocTableElement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Client\Documentation\Сoming\FormClientDocComing.cs" />
-    <Compile Include="Client\Documentation\Сoming\FormClientDocComing.Designer.cs">
+    <Compile Include="Client\Documentation\Coming\FormClientDocComing.cs" />
+    <Compile Include="Client\Documentation\Coming\FormClientDocComing.Designer.cs">
       <DependentUpon>FormClientDocComing.cs</DependentUpon>
     </Compile>
     <Compile Include="Client\FormClient.cs" />
@@ -320,7 +320,7 @@
     <EmbeddedResource Include="Client\Documentation\TabularSection\FormClientDocTableElement.resx">
       <DependentUpon>FormClientDocTableElement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Client\Documentation\Сoming\FormClientDocComing.resx">
+    <EmbeddedResource Include="Client\Documentation\Coming\FormClientDocComing.resx">
       <DependentUpon>FormClientDocComing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Client\FormClient.resx">
@@ -425,7 +425,7 @@
     <Folder Include="Client\Documentation\TabularSection" />
     <Folder Include="Client\Documentation\Expense" />
     <Folder Include="Client\Documentation\Operations" />
-    <Folder Include="Client\Documentation\Сoming" />
+    <Folder Include="Client\Documentation\Coming" />
     <Folder Include="Client\Reports" />
     <Folder Include="Classes" />
     <Folder Include="MSSQL" />
